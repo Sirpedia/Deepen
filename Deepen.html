@@ -1,49 +1,47 @@
+<!DOCTYPE html>
 <html>
-<title> Deepen </title>
-<button onmousedown="MoveLeft()"> Left </button>
-<button onmousedown="MoveRight()"> Right </button>
-<button onmousedown="Salvage()"> Salvage </button>
-<img src="Gem.png" id="Gem" style="position:absolute;top:50%;left:350px;">
-<img src="Jadite.png" id="Char" style="position:absolute;top:50%">
-<h1 id="Counter"> 0 </h1>
+<head>
+    <title>Deepen</title>
+</head>
+<body>
+    <button onmousedown="MoveLeft()"> Left </button>
+    <button onmousedown="MoveRight()"> Right </button>
+    <button onmousedown="Salvage()"> Salvage </button>
+    <img src="Gem.png" id="Gem" style="position:absolute;top:50%;left:350px;">
+    <img src="Jadite.png" id="Char" style="position:absolute;top:50%;">
+    <h1 id="Counter"> 0 </h1>
 
-<script>
-Position = document.getElementById("Char")
-Counter = document.getElementById("Counter")
-realval = localStorage.getItem("savecount")
-Counter.innerhtml = realval
-realval = 0
-Pos = 0
-function MoveLeft() {
-Pos = Pos - 50
-Position.style.left = Pos
+    <script>
+        const Position = document.getElementById("Char");
+        const Counter = document.getElementById("Counter");
 
+        let realval = localStorage.getItem("savecount") || 0;
+        Counter.innerHTML = realval;
+        let Pos = 0;
 
+        function MoveLeft() {
+            Pos = Pos - 50;
+            Position.style.left = Pos + "px";  // Add "px" unit
+        }
 
-}
+        function MoveRight() {
+            Pos = Pos + 50;
+            Position.style.left = Pos + "px";  // Add "px" unit
+        }
 
-function MoveRight() {
-Pos = Pos + 50
-Position.style.left = Pos
-
-
-
-}
-function Salvage() {
-
-if (Pos > 260) {
-if (Pos < 450) {
-    realval = realval + 1
-    Counter.innerHTML = realval
-localStorage.setItem("savecount",realval)
-}
-
-
-}
-
-
-
-
-}
-</script>
+        function Salvage() {
+            if (Pos > 260 && Pos < 450) {
+                realval = parseInt(realval) + 1;
+                Counter.innerHTML = realval;
+                localStorage.setItem("savecount", realval);
+            }
+        }
+    </script>
+</body>
 </html>
+
+
+
+
+
+
