@@ -1,11 +1,12 @@
 <html>
 <title> Deepen </title>
-<img src="Jadite.png" id="Char" style="position:absolute;top:50%">
 <button onmousedown="MoveLeft()"> Left </button>
 <button onmousedown="MoveRight()"> Right </button>
 <button onmousedown="Salvage()"> Salvage </button>
 <img src="Gem.png" id="Gem" style="position:absolute;top:50%;left:350px;">
-<h1 id="Counter"> 0 </h1>
+<img src="Jadite.png" id="Char" style="position:absolute;top:50%">
+<h1 id="Counter" style="position: absolute; left: 50px;> 0 </h1>
+<img src="Gem.png" id="Gem" style="height: 10%; width: 10%">
 <script>
 Position = document.getElementById("Char")
 Counter = document.getElementById("Counter")
@@ -29,7 +30,7 @@ Position.style.left = Pos
 function Salvage() {
 
 if (Pos > 260) {
-if (Pos < 400) {
+if (Pos < 450) {
     realval = realval + 1
     Counter.innerHTML = realval
 
