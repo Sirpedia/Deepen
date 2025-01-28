@@ -3,19 +3,15 @@
 <img src="Jadite.png" id="Char" style="position:absolute;top:50%">
 <button onmousedown="MoveLeft()"> Left </button>
 <button onmousedown="MoveRight()"> Right </button>
-
+<button onmousedown="Salvage()"> Salvage </button>
+<img src="Gem.png" id="Gem" style="position:absolute;top:40%;left:300px;">
+<h1 id="Counter"> 0 </h1>
 <script>
 Position = document.getElementById("Char")
+Counter = document.getElementById("Counter")
+realval = 0
 Pos = 0
 function MoveLeft() {
-Pos = Pos + 50
-Position.style.left = Pos
-
-
-
-}
-
-function MoveRight() {
 Pos = Pos - 50
 Position.style.left = Pos
 
@@ -23,5 +19,28 @@ Position.style.left = Pos
 
 }
 
+function MoveRight() {
+Pos = Pos + 50
+Position.style.left = Pos
+
+
+
+}
+function Salvage() {
+
+if (Pos > 300) {
+if (Pos < 400) {
+    realval = realval + 1
+    Counter.innerHTML = realval
+
+}
+
+
+}
+
+
+
+
+}
 </script>
 </html>
