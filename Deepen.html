@@ -10,6 +10,7 @@
 <script>
 Position = document.getElementById("Char")
 Counter = document.getElementById("Counter")
+Counter.innerhtml = localStorage.getItem("savecount")
 realval = 0
 Pos = 0
 function MoveLeft() {
@@ -33,7 +34,7 @@ if (Pos > 260) {
 if (Pos < 450) {
     realval = realval + 1
     Counter.innerHTML = realval
-
+localStorage.setItem("savecount",realval)
 }
 
 
