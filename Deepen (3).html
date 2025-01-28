@@ -1,0 +1,27 @@
+<html>
+<title> Deepen </title>
+<img src="Jadite.png" id="Char" style="position:absolute;top:50%">
+<button onmousedown="MoveLeft()"> Left </button>
+<button onmousedown="MoveRight()"> Right </button>
+
+<script>
+Position = document.getElementById("Char")
+Pos = 0
+function MoveLeft() {
+Pos = Pos + 50
+Position.style.left = Pos
+
+
+
+}
+
+function MoveRight() {
+Pos = Pos - 50
+Position.style.left = Pos
+
+
+
+}
+
+</script>
+</html>
