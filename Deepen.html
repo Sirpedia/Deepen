@@ -10,7 +10,8 @@
 <script>
 Position = document.getElementById("Char")
 Counter = document.getElementById("Counter")
-Counter.innerhtml = localStorage.getItem("savecount")
+realval = localStorage.getItem("savecount")
+Counter.innerhtml = realval
 realval = 0
 Pos = 0
 function MoveLeft() {
