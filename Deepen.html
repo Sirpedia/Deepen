@@ -81,7 +81,7 @@
         // Salvage function
         function Salvage() {
             if (Pos > 260 && Pos < 450) {
-                realval = parseInt(realval) + parseInt(level);
+                realval = parseInt(realval) + parseInt(level) * parseInt(multiplier);
                 Counter.innerHTML = realval;
                 localStorage.setItem("savecount", realval);
                 document.getElementById("SalvageSound").play();
