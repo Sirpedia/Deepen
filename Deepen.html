@@ -50,7 +50,7 @@
                 Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
                 if (exp > 2**level) {
-                    level = level + 1
+                    level = parseInt(level) + 1
                     Displaylevel.innerHTML = "Level " + level
                      localStorage.setItem("savelevel", level);
                     
