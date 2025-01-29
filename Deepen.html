@@ -10,6 +10,7 @@
   <button onmousedown="Salvage()"> Salvage </button>
   <button onmousedown="Harvest()"> Harvest </button>
   <button onmousedown="Reset()"> Reset Progress </button>
+    
 </div>
 
     <img src="Ground.png" width="3000" height="1000" style="position:absolute;top:60%;left:0px;">
@@ -22,6 +23,8 @@
     <audio autoplay loop>
         <source src="Depth.mp3" type="Audio/mpeg">
     </audio>
+
+    <audio src="Rip.wav" id ="HarvestSound">
     <script>
         const Position = document.getElementById("Char");
         const Counter = document.getElementById("Counter");
@@ -52,7 +55,8 @@
             }
         }
                 function Harvest() {
-            if (Pos > 640 && Pos < 770) {
+            document.getElementById("HarvestSound").play()
+                    if (Pos > 640 && Pos < 770) {
                 exp = parseInt(exp) + 1;
                 Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
