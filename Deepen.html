@@ -7,15 +7,21 @@
     <button onmousedown="MoveLeft()"> Left </button>
     <button onmousedown="MoveRight()"> Right </button>
     <button onmousedown="Salvage()"> Salvage </button>
+    <button onmousedown="Harvest()"> Harvest </button>
     <img src="Gem.png" id="Gem" style="position:absolute;top:50%;left:350px;">
+    <img src="Mushrum.png" id="Mushrum" style="position:absolute;top:50%;left:700px;">
     <img src="Jadite.png" id="Char" style="position:absolute;top:50%;">
     <h1 id="Counter"> 0 </h1>
-
+    <h1 id="Level"> Level 1 </h1>
+    <h1 id="Exp"> </h1>
     <script>
         const Position = document.getElementById("Char");
         const Counter = document.getElementById("Counter");
-
+        const Displaylevel = document.getElementById("Level");
+        const Displayexp = document.getElementById("Exp");
         let realval = localStorage.getItem("savecount") || 0;
+        let level = localStorage.getItem("savelevel") || 1;
+        let exp = localStorage.getItem("saveexp") || 0;
         Counter.innerHTML = realval;
         let Pos = 0;
 
@@ -31,9 +37,21 @@
 
         function Salvage() {
             if (Pos > 260 && Pos < 450) {
-                realval = parseInt(realval) + 1;
+                realval = parseInt(realval) + level;
                 Counter.innerHTML = realval;
                 localStorage.setItem("savecount", realval);
+            }
+        }
+                function Harvest() {
+            if (Pos > 260 && Pos < 450) {
+                exp = parseInt(realval) + 1;
+                Displayexp.innerHTML = exp;
+                localStorage.setItem("saveexp", exp);
+                if (exp == 2**level) {
+                    level = level * 2
+                    Displaylevel.innerHTML = "Level" + level
+                    
+                }
             }
         }
     </script>
