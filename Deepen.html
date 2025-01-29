@@ -44,7 +44,7 @@
         }
                 function Harvest() {
             if (Pos > 260 && Pos < 450) {
-                exp = parseInt(realval) + 1;
+                exp = parseInt(exp) + 1;
                 Displayexp.innerHTML = exp;
                 localStorage.setItem("saveexp", exp);
                 if (exp == 2**level) {
