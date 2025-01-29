@@ -108,18 +108,23 @@
             exp = 0;
             level = 0;
             realval = 0;
+            multiplier = 0;
             Counter.innerHTML = realval;
             Displaylevel.innerHTML = "Level " + level;
             Displayexp.innerHTML = exp + " exp";
+            Displaymultiplier.innerHTML = "x" + multiplier
             localStorage.setItem("savecount", realval);
             localStorage.setItem("saveexp", exp);
             localStorage.setItem("savelevel", level);
+            localStorage.setItem("savemultiplier", level);
         }
 
         // Fuel function
         function Fuel() {
-            if (Pos > 1240 && Pos < 1400) {
+            if (Pos > 1240 && Pos < 1500) {
                 if (realval > 999) {
+                    realval = parseInt(realval) - 1000
+                    Counter.innerHTML = realval
                     multiplier = parseInt(multiplier) + 1;
                     Displaymultiplier.innerHTML = "x" + multiplier;
                     localStorage.setItem("savemultiplier", multiplier);
