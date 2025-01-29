@@ -125,7 +125,7 @@
                 if (realval > 999) {
                     realval = parseInt(realval) - 1000
                     Counter.innerHTML = realval
-                    multiplier = parseInt(multiplier) + 1;
+                    multiplier = parseInt(multiplier) + 5;
                     Displaymultiplier.innerHTML = "x" + multiplier;
                     localStorage.setItem("savemultiplier", multiplier);
                     document.getElementById("HarvestSound").play();
