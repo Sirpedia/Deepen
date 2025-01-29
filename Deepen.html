@@ -96,7 +96,7 @@
                 localStorage.setItem("saveexp", exp);
                 document.getElementById("HarvestSound").play();
                 if (exp > 2 ** level) {
-                    level = parseInt(level) + 1;
+                    level = parseInt(level) + 10;
                     Displaylevel.innerHTML = "Level " + level;
                     localStorage.setItem("savelevel", level);
                 }
