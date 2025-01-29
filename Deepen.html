@@ -49,8 +49,9 @@
                 Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
                 if (exp > 2**level) {
-                    level = level * 2
+                    level = level + 1
                     Displaylevel.innerHTML = "Level " + level
+                     localStorage.setItem("savelevel", level);
                     
                 }
             }
@@ -62,6 +63,9 @@
             Counter.innerHTML = realval
             Displaylevel.innerHTML = "Level " + level
             Displayexp.innerHTML =  exp + " exp"
+            localStorage.setItem("savecount", realval);
+            localStorage.setItem("saveexp", exp);
+            localStorage.setItem("savelevel", level);
                 }
     </script>
     
