@@ -4,33 +4,43 @@
     <title>Deepen</title>
 </head>
 <body style="background-color:#1E1E1E;">
-    background-attachment:fixed;
-    background-repeat: no-repeat;
-    background-size: cover;">
-    
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <button onmousedown="MoveLeft()"> Left </button>
-  <button onmousedown="MoveRight()"> Right </button>
-  <button onmousedown="Salvage()"> Salvage </button>
-  <button onmousedown="Harvest()"> Harvest </button>
-  <button onmousedown="Reset()"> Reset Progress </button>
-    
-</div>
+    <!-- Added background style fixing -->
+    <style>
+        body {
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 
+    <!-- Buttons for actions -->
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+      <button onmousedown="MoveLeft()"> Left </button>
+      <button onmousedown="MoveRight()"> Right </button>
+      <button onmousedown="Salvage()"> Salvage </button>
+      <button onmousedown="Harvest()"> Harvest </button>
+      <button onmousedown="Fuel()"> Fuel </button>
+      <button onmousedown="Reset()"> Reset Progress </button>
+    </div>
+
+    <!-- Images and positioning -->
     <img src="Ground (1).png" width="3000" height="1000" style="position:absolute;top:60%;left:0px;">
     <img src="Gem.png" id="Gem" style="position:absolute;top:50%;left:350px;">
     <img src="Mushrum.png" id="Mushrum" style="position:absolute;top:57%;left:700px;">
     <img src="Jadite.png" id="Char" style="position:absolute;top:57%; left:0px;z-index:10;">
     <img src="Fueler.png" id="Fueler" style="position:absolute;top:50%; left:1300px;">
 
-    <div style="display: flex; align-items: center; gap: 10px;position: fixed;">
-  <img src="Token.png" width="100" height="100">
-  <h1 id="Counter" style="font-size:75px;font-family: Arial Black, Gadget, sans-serif;"> 0 </h1>
-</div>
+    <!-- Counter and other UI elements -->
+    <div style="display: flex; align-items: center; gap: 10px; position: fixed;">
+        <img src="Token.png" width="100" height="100">
+        <h1 id="Counter" style="font-size:75px;font-family: Arial Black, Gadget, sans-serif;"> 0 </h1>
+    </div>
     
     <h1 id="Level" style="font-family: Arial Black, Gadget, sans-serif;position: fixed;top: 20%"> Level 1 </h1>
     <h1 id="Exp" style="font-family: Arial Black, Gadget, sans-serif;position: fixed;top: 30%"> </h1>
     <h1 id="Multiplier" style="font-family: Arial Black, Gadget, sans-serif;position: fixed;top: 40%"> x1 </h1>
+
+    <!-- Audio -->
     <audio autoplay loop>
         <source src="Depth.mp3" type="Audio/mpeg">
     </audio>
@@ -44,15 +54,20 @@
         const Displaylevel = document.getElementById("Level");
         const Displayexp = document.getElementById("Exp");
         const Displaymultiplier = document.getElementById("Multiplier");
+
+        // Local storage setup
         let realval = localStorage.getItem("savecount") || 0;
         let level = localStorage.getItem("savelevel") || 1;
         let exp = localStorage.getItem("saveexp") || 0;
         let multiplier = localStorage.getItem("savemultiplier") || 1;
+
         Counter.innerHTML = realval;
-        Displaylevel.innerHTML = "Level " + level
-        Displaymultiplier.innerHTML = "x" + multiplier
+        Displaylevel.innerHTML = "Level " + level;
+        Displaymultiplier.innerHTML = "x" + multiplier;
+
         let Pos = 0;
-        
+
+        // Move functions
         function MoveLeft() {
             Pos = Pos - 50;
             Position.style.left = Pos + "px";  // Add "px" unit
@@ -63,56 +78,59 @@
             Position.style.left = Pos + "px";  // Add "px" unit
         }
 
+        // Salvage function
         function Salvage() {
             if (Pos > 260 && Pos < 450) {
                 realval = parseInt(realval) + parseInt(level);
                 Counter.innerHTML = realval;
                 localStorage.setItem("savecount", realval);
-                document.getElementById("SalvageSound").play()
+                document.getElementById("SalvageSound").play();
             }
         }
-                function Harvest() {
-        
-                    if (Pos > 640 && Pos < 770) {
+
+        // Harvest function
+        function Harvest() {
+            if (Pos > 640 && Pos < 770) {
                 exp = parseInt(exp) + parseInt(multiplier);
                 Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
-                document.getElementById("HarvestSound").play()
-                if (exp > 2**level) {
-                    level = parseInt(level) + 1
-                    Displaylevel.innerHTML = "Level " + level
-                     localStorage.setItem("savelevel", level);
-                    
+                document.getElementById("HarvestSound").play();
+                if (exp > 2 ** level) {
+                    level = parseInt(level) + 1;
+                    Displaylevel.innerHTML = "Level " + level;
+                    localStorage.setItem("savelevel", level);
                 }
             }
         }
+
+        // Reset function
         function Reset() {
-            exp = 0
-            level = 0
-            realval = 0
-            Counter.innerHTML = realval
-            Displaylevel.innerHTML = "Level " + level
-            Displayexp.innerHTML =  exp + " exp"
+            exp = 0;
+            level = 0;
+            realval = 0;
+            Counter.innerHTML = realval;
+            Displaylevel.innerHTML = "Level " + level;
+            Displayexp.innerHTML = exp + " exp";
             localStorage.setItem("savecount", realval);
             localStorage.setItem("saveexp", exp);
             localStorage.setItem("savelevel", level);
-                }
+        }
 
+        // Fuel function
         function Fuel() {
-        
-                    if (Pos > 1240 && Pos < 1400) {
-                        if (realval > 999) {
-                        multiplier = parseInt(multiplier) + 1
-                Displaymultiplier.innerHTML = "x" + multiplier
-                localStorage.setItem("savemultiplier", multiplier);
-                document.getElementById("HarvestSound").play()
-                    }
-
+            if (Pos > 1240 && Pos < 1400) {
+                if (realval > 999) {
+                    multiplier = parseInt(multiplier) + 1;
+                    Displaymultiplier.innerHTML = "x" + multiplier;
+                    localStorage.setItem("savemultiplier", multiplier);
+                    document.getElementById("HarvestSound").play();
                 }
+            }
+        }
     </script>
-    
 </body>
 </html>
+
 
 
 
