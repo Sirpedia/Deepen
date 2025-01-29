@@ -13,6 +13,7 @@
   <button onmousedown="MoveRight()"> Right </button>
   <button onmousedown="Salvage()"> Salvage </button>
   <button onmousedown="Harvest()"> Harvest </button>
+    <button onmousedown="Fuel()"> Fuel </button>
   <button onmousedown="Reset()"> Reset Progress </button>
     
 </div>
@@ -30,7 +31,7 @@
     
     <h1 id="Level" style="font-family: Arial Black, Gadget, sans-serif;position: fixed;top: 20%"> Level 1 </h1>
     <h1 id="Exp" style="font-family: Arial Black, Gadget, sans-serif;position: fixed;top: 30%"> </h1>
-    <h1 id="intro" style="color:white;display: flex; justify-content: center; align-items: center; font-size:50px;"> Elven Coves </h1>
+    <h1 id="Multiplier" style="font-family: Arial Black, Gadget, sans-serif;position: fixed;top: 40%"> x1 </h1>
     <audio autoplay loop>
         <source src="Depth.mp3" type="Audio/mpeg">
     </audio>
@@ -43,13 +44,16 @@
         const Counter = document.getElementById("Counter");
         const Displaylevel = document.getElementById("Level");
         const Displayexp = document.getElementById("Exp");
+        const Displaymultiplier = document.getElementById("Multiplier");
         let realval = localStorage.getItem("savecount") || 0;
         let level = localStorage.getItem("savelevel") || 1;
         let exp = localStorage.getItem("saveexp") || 0;
+        let multiplier = localStorage.getItem("savemultiplier") || 1;
         Counter.innerHTML = realval;
         Displaylevel.innerHTML = "Level " + level
+        Displaymultiplier.innerHTML = "x" + multiplier
         let Pos = 0;
-
+        
         function MoveLeft() {
             Pos = Pos - 50;
             Position.style.left = Pos + "px";  // Add "px" unit
@@ -71,7 +75,7 @@
                 function Harvest() {
         
                     if (Pos > 640 && Pos < 770) {
-                exp = parseInt(exp) + 1;
+                exp = parseInt(exp) + parseInt(multiplier);
                 Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
                 document.getElementById("HarvestSound").play()
@@ -93,6 +97,18 @@
             localStorage.setItem("savecount", realval);
             localStorage.setItem("saveexp", exp);
             localStorage.setItem("savelevel", level);
+                }
+
+        function Fuel() {
+        
+                    if (Pos > 1240 && Pos < 1400) {
+                        if (realval > 999) {
+                        multiplier = parseInt(multiplier) + 1
+                Displaymultiplier.innerHTML = "x" + multiplier
+                localStorage.setItem("savemultiplier", multiplier);
+                document.getElementById("HarvestSound").play()
+                    }
+
                 }
     </script>
     
