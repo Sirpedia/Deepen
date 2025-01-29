@@ -7,7 +7,8 @@
     <button onmousedown="MoveLeft()"> Left </button>
     <button onmousedown="MoveRight()"> Right </button>
     <button onmousedown="Salvage()"> Salvage </button>
-    <button onmousedown="Harvest()"> Harvest </button>
+    <button onmousedown="Harvest()"> Harvest </button
+    <button onmousedown="Reset()"> Reset Progress </button>
     <img src="Gem.png" id="Gem" style="position:absolute;top:50%;left:350px;">
     <img src="Mushrum.png" id="Mushrum" style="position:absolute;top:50%;left:700px;">
     <img src="Jadite.png" id="Char" style="position:absolute;top:50%;">
@@ -45,15 +46,23 @@
                 function Harvest() {
             if (Pos > 260 && Pos < 450) {
                 exp = parseInt(exp) + 1;
-                Displayexp.innerHTML = exp;
+                Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
                 if (exp > 2**level) {
                     level = level * 2
-                    Displaylevel.innerHTML = "Level" + level
+                    Displaylevel.innerHTML = "Level " + level
                     
                 }
             }
         }
+        function Reset() {
+            exp = 0
+            level = 0
+            realval = 0
+            Counter.innerHTML = realval
+            Displaylevel.innerHTML = "Level " + level
+            Displayexp.innerHTML =  exp + " exp"
+                }
     </script>
     
 </body>
