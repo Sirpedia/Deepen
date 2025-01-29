@@ -25,6 +25,7 @@
     </audio>
 
     <audio src="Rip.wav" id="HarvestSound"></audio>
+    <audio src="Crystals.wav" id="SalvageSound"></audio>
 
     <script>
         const Position = document.getElementById("Char");
@@ -53,14 +54,16 @@
                 realval = parseInt(realval) + parseInt(level);
                 Counter.innerHTML = realval;
                 localStorage.setItem("savecount", realval);
+                document.getElementById("SalvageSound").play()
             }
         }
                 function Harvest() {
-            document.getElementById("HarvestSound").play()
+        
                     if (Pos > 640 && Pos < 770) {
                 exp = parseInt(exp) + 1;
                 Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
+                document.getElementById("HarvestSound").play()
                 if (exp > 2**level) {
                     level = parseInt(level) + 1
                     Displaylevel.innerHTML = "Level " + level
