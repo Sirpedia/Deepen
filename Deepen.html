@@ -38,7 +38,7 @@
 
         function Salvage() {
             if (Pos > 260 && Pos < 450) {
-                realval = parseInt(realval) + number(level);
+                realval = parseInt(realval) + level;
                 Counter.innerHTML = realval;
                 localStorage.setItem("savecount", realval);
             }
