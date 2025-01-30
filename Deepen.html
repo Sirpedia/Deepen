@@ -95,7 +95,7 @@
                 Displayexp.innerHTML = exp + " exp";
                 localStorage.setItem("saveexp", exp);
                 document.getElementById("HarvestSound").play();
-                if (exp > 1.4 ** level) {
+                if (exp > 2 ** level) {
                     level = parseInt(level) + 1;
                     Displaylevel.innerHTML = "Level " + level;
                     localStorage.setItem("savelevel", level);
@@ -122,8 +122,8 @@
         // Fuel function
         function Fuel() {
             if (Pos > 1240 && Pos < 1500) {
-                if (realval > 999) {
-                    realval = parseInt(realval) - 1000
+                if (realval > 5000) {
+                    realval = parseInt(realval) - 5000
                     Counter.innerHTML = realval
                     localStorage.setItem("savecount", realval);
                     multiplier = parseInt(multiplier) + 1;
